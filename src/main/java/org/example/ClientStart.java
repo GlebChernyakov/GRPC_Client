@@ -27,7 +27,9 @@ public class ClientStart {
         GreetingServiceOuterClass.HelloRequest request = GreetingServiceOuterClass.HelloRequest
                 .newBuilder().setName("MyName").build();
 
-        Iterator<GreetingServiceOuterClass.HelloResponse> response = stub.greeting(request);
+        // Вызываем метод greeting(), но этот метод описан только на удаленном сервере
+        Iterator<GreetingServiceOuterClass.HelloResponse> response =
+                stub.greeting(request);
 
         while (response.hasNext()) {
             System.out.println(response.next());
