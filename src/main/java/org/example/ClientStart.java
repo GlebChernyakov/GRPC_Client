@@ -16,14 +16,16 @@ public class ClientStart {
 
     public static void main(String[] args) {
 
+        //Задаем канал, по которому клиент будет отправлять или принимать сообщения
         ManagedChannel channel = ManagedChannelBuilder.forTarget("localhost:8080")
                 .usePlaintext().build();
+
 
         GreetingServiceGrpc.GreetingServiceBlockingStub stub =
                 GreetingServiceGrpc.newBlockingStub(channel);
 
         GreetingServiceOuterClass.HelloRequest request = GreetingServiceOuterClass.HelloRequest
-                .newBuilder().setName("Gleb").build();
+                .newBuilder().setName("MyName").build();
 
         Iterator<GreetingServiceOuterClass.HelloResponse> response = stub.greeting(request);
 
